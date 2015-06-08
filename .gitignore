@@ -1,0 +1,8 @@
+Packages/
+.theos
+theos
+*.deb
+_/
+obj/
+theos/
+
