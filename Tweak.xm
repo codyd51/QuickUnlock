@@ -65,20 +65,3 @@ static NSString* originalPasscode;
     return %orig;
 }
 %end
-
-
-static void loadPreferences() {
-    CFPreferencesAppSynchronize(CFSTR("com.phillipt.quicklock"));
-
-    //enabled = [(id)CFPreferencesCopyAppValue(CFSTR("enabled"), CFSTR("com.phillipt.quicklock")) boolValue];
-}
-
-%ctor {
-    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(),
-                                NULL,
-                                (CFNotificationCallback)loadPreferences,
-                                CFSTR("com.phillipt.quicklock/prefsChanged"),
-                                NULL,
-                                CFNotificationSuspensionBehaviorDeliverImmediately);
-    loadPreferences();
-}
